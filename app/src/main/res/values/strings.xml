@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">CloseSpotify</string>
+    <string name="app_name">Close Spotify</string>
+    <string name="start_count_down">Kill application</string>
 </resources>
