@@ -9,7 +9,7 @@ import com.casas.fabiel.closespotify.services.CloseServiceIntent
 import java.util.*
 
 
-class MainViewModel(private val context: Context) {
+class CountDownViewModel(private val context: Context) {
     private var alarmManager: AlarmManager? = null
     private var alarmIntent: PendingIntent? = null
 

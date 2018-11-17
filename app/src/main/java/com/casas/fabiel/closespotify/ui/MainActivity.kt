@@ -1,29 +1,31 @@
 package com.casas.fabiel.closespotify.ui
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import com.casas.fabiel.closespotify.R
-import com.casas.fabiel.closespotify.viewmodel.MainViewModel
+import com.casas.fabiel.closespotify.ui.fragments.CountDownFragment
+import com.casas.fabiel.closespotify.utils.base.BaseTimeFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    var viewModel: MainViewModel? = null
+    var currentFragment: BaseTimeFragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        viewModel = MainViewModel(this)
+        currentFragment = CountDownFragment()
+        supportFragmentManager.beginTransaction().add(R.id.mainLayoutContainer, currentFragment).commit()
         initListeners()
     }
 
     private fun initListeners() {
-        buttonStartCountDown.setOnClickListener {
+        floatingActionButtonStart.setOnClickListener {
             startCalendarEvent()
         }
     }
 
     private fun startCalendarEvent() {
-        viewModel?.createAlarm()
+        currentFragment?.start()
     }
 }

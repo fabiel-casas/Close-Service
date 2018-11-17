@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.CountDownFragment"
+    tools:layout_editor_absoluteY="81dp">
+
+    <TextView
+        android:id="@+id/textViewTimeCountdown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_dimen"
+        android:layout_marginBottom="@dimen/small_dimen"
+        android:contentDescription="@string/countdown_initial_des_content"
+        android:fontFamily="@font/voces"
+        android:text="@string/countdown_initial"
+        android:textColor="@color/main_text_color"
+        android:textSize="@dimen/large_text_size"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineMiddleReference"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/countdown_initial" />
+
+    <ProgressBar
+        android:id="@+id/progressBarCountdown"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="@dimen/no_dimen"
+        android:layout_height="@dimen/no_dimen"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="@dimen/large_dimen"
+        android:layout_marginTop="@dimen/large_dimen"
+        android:layout_marginEnd="@dimen/large_dimen"
+        android:layout_marginBottom="@dimen/large_dimen"
+        android:padding="55dp"
+        android:background="@drawable/shape_circle_countdown_exterior"
+        android:indeterminate="false"
+        android:max="100"
+        android:progress="100"
+        android:progressDrawable="@drawable/shape_circle_countdown_interior"
+        android:rotation="-90"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineMiddleReference"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineMiddleReference"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+</android.support.constraint.ConstraintLayout>
