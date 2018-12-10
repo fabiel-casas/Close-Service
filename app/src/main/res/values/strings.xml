@@ -4,6 +4,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="countdown_initial">00:00:00</string>
+    <string name="countdown_initial">00</string>
+    <string name="countdown_separator">:</string>
     <string name="countdown_initial_des_content">Countdown in 0 Hours 0 Minutes and 0 seconds</string>
 </resources>

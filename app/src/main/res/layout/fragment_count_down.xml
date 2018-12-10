@@ -7,23 +7,96 @@
     tools:context=".ui.fragments.CountDownFragment"
     tools:layout_editor_absoluteY="81dp">
 
-    <TextView
-        android:id="@+id/textViewTimeCountdown"
+    <LinearLayout
+        android:id="@+id/layoutTimeCounter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_dimen"
         android:layout_marginBottom="@dimen/small_dimen"
         android:contentDescription="@string/countdown_initial_des_content"
-        android:fontFamily="@font/voces"
-        android:text="@string/countdown_initial"
-        android:textColor="@color/main_text_color"
-        android:textSize="@dimen/large_text_size"
         app:layout_constraintBottom_toTopOf="@+id/guidelineMiddleReference"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/countdown_initial" />
+        android:orientation="horizontal"
+        tools:text="@string/countdown_initial" >
+
+        <TextView
+            android:id="@+id/textViewTimeCountdownHours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small_dimen"
+            android:layout_marginBottom="@dimen/small_dimen"
+            style="@style/TextViewStyle.CountDown"
+            android:text="@string/countdown_initial"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineMiddleReference"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/countdown_initial" />
+
+        <TextView
+            android:id="@+id/textViewTimeCountdownSeparator1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small_dimen"
+            android:layout_marginBottom="@dimen/small_dimen"
+            style="@style/TextViewStyle.CountDown"
+            android:text="@string/countdown_separator"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineMiddleReference"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/countdown_separator" />
+
+        <TextView
+            android:id="@+id/textViewTimeCountdownMinutes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small_dimen"
+            android:layout_marginBottom="@dimen/small_dimen"
+            android:text="@string/countdown_initial"
+            style="@style/TextViewStyle.CountDown"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineMiddleReference"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/countdown_initial" />
+
+        <TextView
+            android:id="@+id/textViewTimeCountdownSeparator2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small_dimen"
+            android:layout_marginBottom="@dimen/small_dimen"
+            style="@style/TextViewStyle.CountDown"
+            android:text="@string/countdown_separator"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineMiddleReference"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/countdown_separator" />
+
+        <TextView
+            android:id="@+id/textViewTimeCountdownSeconds"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small_dimen"
+            android:layout_marginBottom="@dimen/small_dimen"
+            style="@style/TextViewStyle.CountDown"
+            android:text="@string/countdown_initial"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineMiddleReference"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/countdown_initial" />
+    </LinearLayout>
 
     <ProgressBar
         android:id="@+id/progressBarCountdown"
@@ -42,6 +115,8 @@
         android:progress="100"
         android:progressDrawable="@drawable/shape_circle_countdown_interior"
         android:rotation="-90"
+        android:visibility="invisible"
+        tools:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/guidelineMiddleReference"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

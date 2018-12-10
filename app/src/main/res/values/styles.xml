@@ -8,4 +8,14 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="TextViewStyle" >
+        <item name="android:fontFamily">@font/voces</item>
+    </style>
+
+    <style name="TextViewStyle.CountDown" >
+        <item name="android:content">@string/countdown_initial_des_content</item>
+        <item name="android:textColor">@color/main_text_color</item>
+        <item name="android:textSize">@dimen/large_text_size</item>
+    </style>
+
 </resources>
