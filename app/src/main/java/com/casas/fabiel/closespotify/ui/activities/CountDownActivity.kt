@@ -1,4 +1,4 @@
-package com.casas.fabiel.closespotify.ui
+package com.casas.fabiel.closespotify.ui.activities
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
