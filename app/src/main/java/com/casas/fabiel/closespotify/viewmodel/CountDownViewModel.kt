@@ -9,6 +9,7 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.CountDownTimer
 import com.casas.fabiel.closespotify.extensions.toHoursTime
 import com.casas.fabiel.closespotify.extensions.toMinutesTime
@@ -24,12 +25,17 @@ class CountDownViewModel(val context: Context) : ViewModel() {
     lateinit var minute: MutableLiveData<String>
     lateinit var seconds: MutableLiveData<String>
     private var alarmTimeMillis = 0L
+    var sharedPreferences: SharedPreferences
 
     init {
+        sharedPreferences = context.getSharedPreferences(TIME_PREFERENCE, Context.MODE_PRIVATE)
     }
 
     companion object {
         val TURN_OFF_REQUEST_CODE = 70
+        val TIME_PREFERENCE = "time_preference"
+        val TIME_PREFERENCE_INIT = "time_preference_init"
+        val TIME_PREFERENCE_TIME = "time_preference_time"
     }
 
     fun setTimer() {
@@ -39,7 +45,9 @@ class CountDownViewModel(val context: Context) : ViewModel() {
     }
 
     fun startAlarm(hourOfDay: Int, minute: Int) {
-        scheduleIntentAlarm(hourOfDay, minute)
+        setTimeToEndMillis(hourOfDay, minute)
+        saveTimeInitAndEnd()
+        scheduleIntentAlarm()
         startCountDownClock()
     }
 
@@ -66,15 +74,25 @@ class CountDownViewModel(val context: Context) : ViewModel() {
         seconds.value = sec.toTimeUnits()
     }
 
-    private fun scheduleIntentAlarm(hourOfDay: Int, minute: Int) {
+    private fun scheduleIntentAlarm() {
         alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context, CloseServiceIntent::class.java)
         alarmIntent = PendingIntent.getService(context, TURN_OFF_REQUEST_CODE, intent, FLAG_UPDATE_CURRENT)
+        alarmManager!!.set(AlarmManager.RTC_WAKEUP, alarmTimeMillis, alarmIntent)
+    }
+
+    private fun setTimeToEndMillis(hourOfDay: Int, minute: Int) {
         val alarmTime = Calendar.getInstance()
         alarmTime.add(Calendar.HOUR, hourOfDay)
         alarmTime.add(Calendar.MINUTE, minute)
         alarmTimeMillis = alarmTime.timeInMillis
-        alarmManager!!.set(AlarmManager.RTC_WAKEUP, alarmTimeMillis, alarmIntent)
+    }
+
+    private fun saveTimeInitAndEnd() {
+        sharedPreferences.edit()
+                .putLong(TIME_PREFERENCE_INIT, Calendar.getInstance().timeInMillis).apply()
+        sharedPreferences.edit()
+                .putLong(TIME_PREFERENCE_TIME, alarmTimeMillis).apply()
     }
 
     fun getHours(): LiveData<String> {
