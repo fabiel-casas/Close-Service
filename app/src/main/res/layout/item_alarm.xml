@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
+    <TextView
+        android:id="@+id/textViewRadioStation"
+        style="@style/TextViewStyle"
+        android:layout_width="@dimen/no_dimen"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/medium_dimen"
+        android:layout_marginTop="@dimen/medium_dimen"
+        android:layout_marginEnd="@dimen/small_dimen"
+        app:layout_constraintEnd_toStartOf="@+id/textViewBluetoothEnabler"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Radio Activa - 97.9 AM" />
+
+    <TextView
+        android:id="@+id/textViewTimeAlarm"
+        style="@style/TextViewStyle"
+        android:layout_width="@dimen/no_dimen"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/medium_dimen"
+        android:layout_marginTop="@dimen/small_dimen"
+        android:layout_marginEnd="@dimen/small_dimen"
+        android:layout_marginBottom="@dimen/medium_dimen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textViewBluetoothEnabler"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRadioStation"
+        tools:text="Set at 5:00 AM" />
+
+    <TextView
+        android:id="@+id/textViewBluetoothEnabler"
+        style="@style/TextViewStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/medium_dimen"
+        android:textColor="@color/green"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="ON" />
 </android.support.constraint.ConstraintLayout>
