@@ -10,7 +10,7 @@ import com.casas.fabiel.closespotify.domain.AlarmItem
 import com.casas.fabiel.closespotify.extensions.toLegibleDate
 import kotlinx.android.synthetic.main.item_alarm.view.*
 
-class AlarmAdapter(var items: List<AlarmItem>): RecyclerView.Adapter<AlarmAdapter.AlarmViewHolder>() {
+class AlarmAdapter(var items: List<AlarmItem>, var listener: (alarmItem: AlarmItem) -> Unit) : RecyclerView.Adapter<AlarmAdapter.AlarmViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlarmViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_alarm, parent, false)
         return AlarmViewHolder(view)
@@ -25,6 +25,9 @@ class AlarmAdapter(var items: List<AlarmItem>): RecyclerView.Adapter<AlarmAdapte
     inner class AlarmViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(alarmItem: AlarmItem) {
+            itemView.setOnClickListener {
+                listener.invoke(alarmItem)
+            }
             itemView.textViewTimeAlarm.text = alarmItem.expirationDate.toLegibleDate()
             itemView.textViewRadioStation.text = alarmItem.textName
             if (alarmItem.repeat) {

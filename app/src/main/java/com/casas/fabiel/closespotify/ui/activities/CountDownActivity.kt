@@ -15,6 +15,7 @@ class CountDownActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_count_down)
         currentFragment = CountDownFragment()
+        currentFragment?.arguments = intent.extras
         supportFragmentManager.beginTransaction().add(R.id.mainLayoutContainer, currentFragment).commit()
         initListeners()
     }

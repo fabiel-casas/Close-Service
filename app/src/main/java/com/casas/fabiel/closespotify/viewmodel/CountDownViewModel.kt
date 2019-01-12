@@ -29,7 +29,7 @@ class CountDownViewModel : ViewModel() {
         startCountDownClock()
     }
 
-    private fun startCountDownClock() {
+    fun startCountDownClock() {
         val timerCount = alarmTimeMillis - Calendar.getInstance().timeInMillis
         object : CountDownTimer(timerCount, 500) {
 

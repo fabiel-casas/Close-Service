@@ -13,6 +13,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.casas.fabiel.closespotify.R
+import com.casas.fabiel.closespotify.domain.ActivityKeys.KEY_COUNTDOWN
+import com.casas.fabiel.closespotify.domain.AlarmItem
 import com.casas.fabiel.closespotify.services.CloseServiceIntent
 import com.casas.fabiel.closespotify.utils.base.BaseTimeFragment
 import com.casas.fabiel.closespotify.viewmodel.CountDownViewModel
@@ -28,7 +30,29 @@ class CountDownFragment : BaseTimeFragment() {
             ViewModelProviders.of(this).get(CountDownViewModel::class.java)
         } ?: throw Exception("Invalid Activity")
         initCountDownText()
+        setInitialValues()
         return inflater.inflate(R.layout.fragment_count_down, container, false)
+    }
+
+    private fun setInitialValues() {
+        val alarm = arguments?.getSerializable(KEY_COUNTDOWN) as AlarmItem
+        alarm.let {
+            viewModel?.alarmTimeMillis = it.expirationDate
+            viewModel?.startCountDownClock()
+        }
+    }
+
+    private fun initCountDownText() {
+        viewModel?.getHours()?.observe(this, Observer<String>{ hourText ->
+            textViewTimeCountdownHours.text = hourText
+        })
+        viewModel?.getMinutes()?.observe(this, Observer<String>{ hourText ->
+            textViewTimeCountdownMinutes.text = hourText
+        })
+
+        viewModel?.getSeconds()?.observe(this, Observer<String>{ hourText ->
+            textViewTimeCountdownSeconds.text = hourText
+        })
     }
 
     override fun start() {
@@ -49,18 +73,4 @@ class CountDownFragment : BaseTimeFragment() {
         val alarmIntent = PendingIntent.getService(context, CountDownViewModel.TURN_OFF_REQUEST_CODE, intent, PendingIntent.FLAG_UPDATE_CURRENT)
         alarmManager.set(AlarmManager.RTC_WAKEUP, viewModel?.alarmTimeMillis!!, alarmIntent)
     }
-
-    private fun initCountDownText() {
-        viewModel?.getHours()?.observe(this, Observer<String>{ hourText ->
-            textViewTimeCountdownHours.text = hourText
-        })
-        viewModel?.getMinutes()?.observe(this, Observer<String>{ hourText ->
-            textViewTimeCountdownMinutes.text = hourText
-        })
-
-        viewModel?.getSeconds()?.observe(this, Observer<String>{ hourText ->
-            textViewTimeCountdownSeconds.text = hourText
-        })
-    }
-
 }
