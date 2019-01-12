@@ -1,5 +1,8 @@
 package com.casas.fabiel.closespotify.extensions
 
+import java.text.SimpleDateFormat
+import java.util.*
+
 fun Int.toTimeUnits(): String {
     if (this <= 10) {
         return "0$this"
@@ -25,4 +28,10 @@ fun Long.toSecondsTime(): Int {
     val minuteTime = 60000L
     val secondsInteger: Int = (this % minuteTime).toInt()
     return secondsInteger / 1000
+}
+
+fun Long.toLegibleDate(): String {
+    val date = Date(this)
+    val format = SimpleDateFormat.getTimeInstance()
+    return format.format(date)
 }

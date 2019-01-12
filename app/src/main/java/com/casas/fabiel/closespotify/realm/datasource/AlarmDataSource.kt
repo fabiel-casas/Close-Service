@@ -32,8 +32,7 @@ class AlarmDataSource {
         realm.executeTransactionAsync {
             val currentIdNum = it.where(AlarmRealmObject::class.java).max("id")
             val nextId = currentIdNum?.toInt()?.plus(1) ?: 1
-            val alarmRealmObject = it.createObject(AlarmRealmObject::class.java)
-            alarmRealmObject.id = nextId
+            val alarmRealmObject = it.createObject(AlarmRealmObject::class.java, nextId)
             alarmRealmObject.alarmType = alarmItem.alarmType
             alarmRealmObject.expirationDate = alarmItem.expirationDate
             alarmRealmObject.textName = alarmItem.textName
