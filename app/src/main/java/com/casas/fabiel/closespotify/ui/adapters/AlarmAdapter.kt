@@ -22,10 +22,6 @@ class AlarmAdapter(var items: List<AlarmItem>, var listener: (alarmItem: AlarmIt
         holder.bind(items.get(position))
     }
 
-    /**
-     * Adaptador de la lista de alarma que neces un @itemView para funciona
-     * @itemView es una vista previamente inflada que tiene 2 campos.
-     */
     inner class AlarmViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(alarmItem: AlarmItem) {
