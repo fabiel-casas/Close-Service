@@ -12,6 +12,7 @@ import com.casas.fabiel.closespotify.domain.ActivityKeys.KEY_COUNTDOWN
 import com.casas.fabiel.closespotify.domain.AlarmItem
 import com.casas.fabiel.closespotify.domain.AlarmTypes.COUNTDOWN
 import com.casas.fabiel.closespotify.ui.adapters.AlarmAdapter
+import com.casas.fabiel.closespotify.utils.Demo
 import com.casas.fabiel.closespotify.viewmodel.MainListViewModel
 import kotlinx.android.synthetic.main.activity_main_list.*
 
@@ -26,6 +27,7 @@ class MainListActivity : AppCompatActivity() {
         viewModel = ViewModelProviders.of(this).get(MainListViewModel::class.java)
         initAdapter()
         initObservers()
+        Demo()
     }
 
 
